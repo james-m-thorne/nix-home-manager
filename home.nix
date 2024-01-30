@@ -1,6 +1,12 @@
 { pkgs, ... }:
 
 {
+  nixpkgs = {
+    config = {
+      allowUnfree = true;
+      allowUnfreePredicate = (_: true);
+    };
+  };
 
   # The home-manager manual is at:
   #
@@ -15,8 +21,8 @@
   #
   # You need to change these to match your username and home directory
   # path:
-  home.username = "$USER";
-  home.homeDirectory = "$HOME";
+  home.username = "james-thorne";
+  home.homeDirectory = "/home/james-thorne";
 
   # If you use non-standard XDG locations, set these options to the
   # appropriate paths:
@@ -42,9 +48,16 @@
     enable = true;
   };
 
-  home.packages = [
-    pkgs.htop
-    pkgs.fortune
+  home.packages = with pkgs;[
+    htop
+    fortune
+    bazel
+    go
+    python3
+    kind
+    kubernetes-helm
+    yarn
+    gh
   ];
 
 }
