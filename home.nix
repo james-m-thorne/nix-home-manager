@@ -103,7 +103,7 @@
   };
 
   home.packages = with pkgs;[
-    (nerdfonts.override { fonts = [ "FiraCode" ]; })
+    (nerdfonts.override { fonts = [ "FiraCode" "CascadiaCode" ]; })
     htop
     fortune
     bazel
