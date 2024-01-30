@@ -44,11 +44,58 @@
   # Since we do not install home-manager, you need to let home-manager
   # manage your shell, otherwise it will not be able to add its hooks
   # to your profile.
-  programs.bash = {
+  # programs.bash = {
+  #   enable = true;
+  # };
+
+  programs.zsh = {
     enable = true;
+    enableAutosuggestions = true;
+    syntaxHighlighting = {
+      enable = true;
+    };
+    zplug = {
+      enable = true;
+      plugins = [
+        { 
+          name = "romkatv/powerlevel10k"; 
+          tags = [ as:theme depth:1 ]; 
+        } # Installations with additional options. For the list of options, please refer to Zplug README.
+      ];
+    };
+    initExtra = ''
+      source ~/.p10k.zsh
+    '';
+    oh-my-zsh = {
+      enable = true;
+      plugins = [
+        "git"
+        "kubectl"
+        "golang"
+        "python"
+        "pyenv"
+        "z"
+        "gh"
+        "docker"
+        "docker-compose"
+        "brew"
+        "bazel"
+        "aws"
+        "git-prompt"
+        "gitfast"
+        "kind"
+      ];
+    };
+  };
+
+  programs.git = {
+    enable = true;
+    userName  = "james-m-thorne";
+    userEmail = "jmthorne101@gmail.com";
   };
 
   home.packages = with pkgs;[
+    (nerdfonts.override { fonts = [ "FiraCode" ]; })
     htop
     fortune
     bazel
@@ -58,6 +105,8 @@
     kubernetes-helm
     yarn
     gh
+    zsh
+    oh-my-zsh
   ];
 
 }
