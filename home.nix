@@ -21,8 +21,8 @@
   #
   # You need to change these to match your username and home directory
   # path:
-  home.username = "james-thorne";
-  home.homeDirectory = "/home/james-thorne";
+  home.username = builtins.getEnv "USER";
+  home.homeDirectory = builtins.getEnv "HOME";
 
   # If you use non-standard XDG locations, set these options to the
   # appropriate paths:
@@ -47,6 +47,18 @@
   # programs.bash = {
   #   enable = true;
   # };
+
+
+  programs.direnv = {
+    enable = true;
+    enableZshIntegration = true;
+    nix-direnv.enable = true;
+  };
+
+  programs.pyenv = {
+    enable = true;
+    enableZshIntegration = true;
+  };
 
   programs.zsh = {
     enable = true;
@@ -73,7 +85,6 @@
         "kubectl"
         "golang"
         "python"
-        "pyenv"
         "z"
         "gh"
         "bazel"
