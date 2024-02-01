@@ -41,12 +41,13 @@
   # changes in each release.
   home.stateVersion = "23.11";
 
-  # Since we do not install home-manager, you need to let home-manager
-  # manage your shell, otherwise it will not be able to add its hooks
-  # to your profile.
-  # programs.bash = {
-  #   enable = true;
-  # };
+  home.sessionVariables = {
+    # Set GOPATH
+    GOPATH = "${builtins.getEnv "HOME"}/go";
+
+    # Update PATH to include GOPATH/bin
+    PATH = "${builtins.getEnv "HOME"}/go/bin:$PATH";
+  };
 
 
   programs.direnv = {
@@ -55,16 +56,15 @@
     nix-direnv.enable = true;
   };
 
-  programs.pyenv = {
-    enable = true;
-    enableZshIntegration = true;
-  };
-
   programs.zsh = {
     enable = true;
     enableAutosuggestions = true;
     syntaxHighlighting = {
       enable = true;
+    };
+    shellAliases = {
+      ls = "eza";
+      ll = "ls -l";
     };
     zplug = {
       enable = true;
@@ -77,6 +77,15 @@
     };
     initExtra = ''
       source ~/.p10k.zsh
+
+      # Source the secrets file
+      if [ -f ~/.nixsecrets ]; then
+        source ~/.nixsecrets
+      fi
+
+      gcamp() {
+        git commit -am "$1" && git push
+      }
     '';
     oh-my-zsh = {
       enable = true;
@@ -103,11 +112,14 @@
   };
 
   home.packages = with pkgs;[
-    (nerdfonts.override { fonts = [ "FiraCode" "CascadiaCode" ]; })
+    (nerdfonts.override { fonts = [ "Meslo" "FiraCode" "CascadiaCode" ]; })
     htop
     fortune
     bazel
+    bazel-buildtools
+    bazel-gazelle
     go
+    eza
     python3
     kind
     kubernetes-helm
