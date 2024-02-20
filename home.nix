@@ -75,6 +75,10 @@
         } # Installations with additional options. For the list of options, please refer to Zplug README.
       ];
     };
+    initExtraFirst = ''
+      # Fig pre block. Keep at the top of this file.
+      [[ -f "$HOME/.fig/shell/zshrc.pre.zsh" ]] && builtin source "$HOME/.fig/shell/zshrc.pre.zsh"
+    '';
     initExtra = ''
       source ~/.p10k.zsh
 
@@ -86,6 +90,11 @@
       gcamp() {
         git commit -am "$1" && git push
       }
+
+      [[ ! $(command -v nix) && -e "/nix/var/nix/profiles/default/etc/profile.d/nix-daemon.sh" ]] && source "/nix/var/nix/profiles/default/etc/profile.d/nix-daemon.sh"
+
+      # Fig post block. Keep at the bottom of this file.
+      [[ -f "$HOME/.fig/shell/zshrc.post.zsh" ]] && builtin source "$HOME/.fig/shell/zshrc.post.zsh"
     '';
     oh-my-zsh = {
       enable = true;
