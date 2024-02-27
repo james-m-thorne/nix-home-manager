@@ -74,6 +74,9 @@
           name = "romkatv/powerlevel10k"; 
           tags = [ as:theme depth:1 ]; 
         } # Installations with additional options. For the list of options, please refer to Zplug README.
+        {
+          name = "jeffreytse/zsh-vi-mode";
+        }
       ];
     };
     initExtra = ''
@@ -85,6 +88,9 @@
       gcamp() {
         git commit -am "$1" && git push
       }
+
+      # Add ctrl+r support with zsh-vi-mode
+      bindkey -M viins '^R' fzf-history-widget
 
       [[ ! $(command -v nix) && -e "/nix/var/nix/profiles/default/etc/profile.d/nix-daemon.sh" ]] && source "/nix/var/nix/profiles/default/etc/profile.d/nix-daemon.sh"
     '';
@@ -115,21 +121,24 @@
 
   home.packages = with pkgs;[
     (nerdfonts.override { fonts = [ "Meslo" "FiraCode" "CascadiaCode" ]; })
-    htop
-    fortune
+    awscli
     bazel
     bazel-buildtools
     bazel-gazelle
-    go
+    bazelisk
     eza
-    python3
-    kind
-    kubernetes-helm
-    yarn
+    fortune
+    fzf
     gh
-    zsh
-    oh-my-zsh
+    go
+    htop
+    jq
+    kind
     kubectl
+    kubernetes-helm
+    python3
+    yarn
+    yq
   ];
 
 }
