@@ -92,6 +92,8 @@
       # Add ctrl+r support with zsh-vi-mode
       bindkey -M viins '^R' fzf-history-widget
 
+      source <(git-town completions zsh) 
+
       [[ ! $(command -v nix) && -e "/nix/var/nix/profiles/default/etc/profile.d/nix-daemon.sh" ]] && source "/nix/var/nix/profiles/default/etc/profile.d/nix-daemon.sh"
     '';
     oh-my-zsh = {
