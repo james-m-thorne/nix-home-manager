@@ -126,6 +126,7 @@
     bazel-buildtools
     bazel-gazelle
     bazelisk
+    dbt
     eza
     fortune
     fzf
