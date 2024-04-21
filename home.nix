@@ -131,6 +131,7 @@
     fortune
     fzf
     gh
+    git-town
     go
     htop
     jq
