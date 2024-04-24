@@ -66,6 +66,13 @@
     shellAliases = {
       ls = "eza";
       ll = "ls -l";
+      gt = "git town";
+      gth = "git town hack";
+      gta = "git town append";
+      gtc = "git town continue";
+      gtp = "git town propose";
+      gts = "git town sync";
+      gtsw = "git town switch";
     };
     zplug = {
       enable = true;
@@ -91,8 +98,6 @@
 
       # Add ctrl+r support with zsh-vi-mode
       bindkey -M viins '^R' fzf-history-widget
-
-      source <(git-town completions zsh) 
 
       [[ ! $(command -v nix) && -e "/nix/var/nix/profiles/default/etc/profile.d/nix-daemon.sh" ]] && source "/nix/var/nix/profiles/default/etc/profile.d/nix-daemon.sh"
     '';
