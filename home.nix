@@ -41,6 +41,9 @@
   # changes in each release.
   home.stateVersion = "23.11";
 
+  home.file."config/zsh/.p10k.zsh".source = ./config/zsh/.p10k.zsh;
+  home.file."config/zsh/.home.zsh".source = ./config/zsh/.home.zsh;
+
   home.sessionVariables = {
     # Set GOPATH
     GOPATH = "${builtins.getEnv "HOME"}/go";
@@ -66,6 +69,14 @@
     shellAliases = {
       ls = "eza";
       ll = "ls -l";
+      gt = "git town";
+      gts = "git town sync";
+      gtp = "git town propose";
+      gtsw = "git town switch";
+      gtc = "git town continue";
+      gth = "git town hack";
+      gta = "git town append";
+      gtk = "git town kill";
     };
     zplug = {
       enable = true;
@@ -80,17 +91,11 @@
       ];
     };
     initExtra = ''
-      source ~/.p10k.zsh
+      source $HOME/config/zsh/.p10k.zsh
+      source $HOME/config/zsh/.home.zsh
 
       # Source the secrets file
       [ -f ~/.nixsecrets ] && source ~/.nixsecrets
-
-      gcamp() {
-        git commit -am "$1" && git push
-      }
-
-      # Add ctrl+r support with zsh-vi-mode
-      bindkey -M viins '^R' fzf-history-widget
 
       [[ ! $(command -v nix) && -e "/nix/var/nix/profiles/default/etc/profile.d/nix-daemon.sh" ]] && source "/nix/var/nix/profiles/default/etc/profile.d/nix-daemon.sh"
     '';
