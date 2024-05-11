@@ -116,6 +116,7 @@ nmap <C-h> <C-w>h
 nmap <C-l> <C-w>l
 
 nmap <leader>ww <Action>(HideAllWindows)
+nmap <leader>wa <Action>(HideActiveWindow)
 nmap <leader>wk <Action>(StretchSplitToTop)
 nmap <leader>wj <Action>(StretchSplitToBottom)
 nmap <leader>wh <Action>(StretchSplitToLeft)
@@ -240,6 +241,7 @@ nmap gn <Action>(ShowNavBar)
 
 " tools
 nmap <leader>tw <Action>(ActivateProjectToolWindow)
+nmap <leader>tv <Action>(ActivateVersionControlToolWindow)
 nmap <leader>tt <Action>(ActivateTerminalToolWindow)
 nmap <leader>tc <Action>(Terminal.OpenInTerminal)
 
