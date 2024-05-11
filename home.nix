@@ -43,6 +43,7 @@
 
   home.file."config/zsh/.p10k.zsh".source = ./config/zsh/.p10k.zsh;
   home.file."config/zsh/.home.zsh".source = ./config/zsh/.home.zsh;
+  home.file.".ideavimrc".source = ./config/.ideavimrc;
 
   home.sessionVariables = {
     # Set GOPATH
