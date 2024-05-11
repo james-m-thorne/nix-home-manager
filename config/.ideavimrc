@@ -1,7 +1,11 @@
 " https://github.com/JetBrains/ideavim/discussions/303#discussioncomment-7664118
 " vim settings
-set scrolloff=5
 set history=1000
+set scrolloff=999
+set relativenumber
+set number
+set visualbell
+set showcmd
 
 " status bar
 set showmode
@@ -234,10 +238,13 @@ nmap gi <Action>(GotoImplementation)
 nmap gI <Action>(QuickImplementations)
 nmap gn <Action>(ShowNavBar)
 
-" terminal
+" tools
 nmap <leader>tw <Action>(ActivateProjectToolWindow)
 nmap <leader>tt <Action>(ActivateTerminalToolWindow)
 nmap <leader>tc <Action>(Terminal.OpenInTerminal)
+
+" annotate
+nmap <leader>an <Action>(Annotate)
 
 " bookmark
 nmap mm <Action>(ToggleBookmark)
