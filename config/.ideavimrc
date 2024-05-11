@@ -76,7 +76,9 @@ vnoremap d "_d
 
 " location
 nmap <C-i> <Action>(Back)
+nmap <S-Left> <Action>(Back)
 nmap <C-o> <Action>(Forward)
+nmap <S-Right> <Action>(Forward)
 
 " buffer (buffer < window < tab)
 nmap <leader>xx <Action>(CloseContent)
