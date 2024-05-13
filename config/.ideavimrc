@@ -174,15 +174,16 @@ nmap <leader>gt <Action>(GoToTest)
 nmap <leader>hi <Action>(ShowHoverInfo)
 
 " run
-nmap <leader>R <Action>(ChooseRunConfiguration)
-nmap <leader>D <Action>(ChooseDebugConfiguration)
-nmap <leader>rc <Action>(ContextRun)
+nmap <leader>R <Action>(Run)
+nmap <leader>rc <Action>(ChooseRunConfiguration)
+nmap <leader>rx <Action>(ContextRun)
 nmap <leader>rt <Action>(RunTests)
 nmap <leader>rs <Action>(Stop)
 
 " debug
-nmap <leader>dc <Action>(ContextDebug)
-nmap <leader>dx <Action>(Debug)
+nmap <leader>D <Action>(Debug)
+nmap <leader>dc <Action>(ChooseDebugConfiguration)
+nmap <leader>dx <Action>(ContextDebug)
 nmap <leader>db <Action>(ToggleLineBreakpoint)
 nmap <leader>de <Action>(EditBreakpoint)
 nmap <leader>dv <Action>(ViewBreakpoints)
