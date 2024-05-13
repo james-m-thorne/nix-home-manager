@@ -42,8 +42,8 @@
   home.stateVersion = "23.11";
 
   home.file = {
-    "config/zsh/.p10k.zsh".source = ./config/zsh/.p10k.zsh;
-    "config/zsh/.home.zsh".source = ./config/zsh/.home.zsh;
+    ".p10k.zsh".source = ./config/zsh/.p10k.zsh;
+    ".home.zsh".source = ./config/zsh/.home.zsh;
     ".ideavimrc".source = ./config/.ideavimrc;
   };
 
@@ -90,14 +90,21 @@
         }
       ];
     };
+    initExtraFirst = ''
+      # Amazon Q pre block. Keep at the top of this file.
+      [ -x "$(command -v q)" ] && eval "$(q init zsh pre --rcfile zshrc)"
+    '';
     initExtra = ''
-      source $HOME/config/zsh/.p10k.zsh
-      source $HOME/config/zsh/.home.zsh
+      source $HOME/.p10k.zsh
+      source $HOME/.home.zsh
 
       # Source the secrets file
-      [ -f ~/.nixsecrets ] && source ~/.nixsecrets
+      [ -f $HOME/.nixsecrets ] && source $HOME/.nixsecrets
 
       [[ ! $(command -v nix) && -e "/nix/var/nix/profiles/default/etc/profile.d/nix-daemon.sh" ]] && source "/nix/var/nix/profiles/default/etc/profile.d/nix-daemon.sh"
+
+      # Amazon Q post block. Keep at the bottom of this file.
+      [ -x "$(command -v q)" ] && eval "$(q init zsh post --rcfile zshrc)"
     '';
     oh-my-zsh = {
       enable = true;
