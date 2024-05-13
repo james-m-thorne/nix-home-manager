@@ -47,14 +47,9 @@
     ".ideavimrc".source = ./config/.ideavimrc;
   };
 
-  home.sessionVariables = {
-    # Set GOPATH
-    GOPATH = "${builtins.getEnv "HOME"}/go";
-
-    # Update PATH to include GOPATH/bin
-    PATH = "${builtins.getEnv "HOME"}/go/bin:$PATH";
+  programs.go = {
+    enable = true;
   };
-
 
   programs.direnv = {
     enable = true;
@@ -141,7 +136,6 @@
     fortune
     fzf
     gh
-    go
     htop
     jq
     kind
