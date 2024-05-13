@@ -41,9 +41,11 @@
   # changes in each release.
   home.stateVersion = "23.11";
 
-  home.file."config/zsh/.p10k.zsh".source = ./config/zsh/.p10k.zsh;
-  home.file."config/zsh/.home.zsh".source = ./config/zsh/.home.zsh;
-  home.file.".ideavimrc".source = ./config/.ideavimrc;
+  home.file = {
+    "config/zsh/.p10k.zsh".source = ./config/zsh/.p10k.zsh;
+    "config/zsh/.home.zsh".source = ./config/zsh/.home.zsh;
+    ".ideavimrc".source = ./config/.ideavimrc;
+  };
 
   home.sessionVariables = {
     # Set GOPATH
@@ -62,22 +64,24 @@
 
   programs.zsh = {
     enable = true;
-    enableAutosuggestions = true;
     enableCompletion = true;
+    autosuggestion = {
+      enable = true;
+    };
     syntaxHighlighting = {
       enable = true;
     };
     shellAliases = {
       ls = "eza";
       ll = "ls -l";
-      gt = "git town";
-      gts = "git town sync";
-      gtp = "git town propose";
-      gtsw = "git town switch";
-      gtc = "git town continue";
-      gth = "git town hack";
-      gta = "git town append";
-      gtk = "git town kill";
+      gt = "git train";
+      gta = "git train append";
+      gtl = "git train last";
+      gtpr = "git train pr";
+      gtd = "git train delete";
+      gts = "git train sync";
+      gtm = "git train set-merged";
+      gtsh = "git train show";
     };
     zplug = {
       enable = true;
@@ -137,7 +141,6 @@
     fortune
     fzf
     gh
-    git-town
     go
     htop
     jq
