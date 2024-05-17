@@ -172,6 +172,8 @@ nmap <leader>so <Action>(SelectAllOccurrences)
 nmap <leader>gc <Action>(Generate)
 nmap <leader>gt <Action>(GoToTest)
 nmap <leader>hi <Action>(ShowHoverInfo)
+nmap <leader>ep <Action>(ExecuteInPyConsoleAction)
+vmap <leader>ep <Action>(ExecuteInPyConsoleAction)
 
 " run
 nmap <leader>R <Action>(Run)
@@ -268,7 +270,8 @@ nmap \\jl <Action>(EditorJoinLines)
 nmap \\cg <Action>(Github.Create.Gist)
 
 " vcs
-nmap <leader>v <Action>(VcsGroups)
+nmap <leader>vv <Action>(VcsGroups)
+nmap <leader>vr <Action>(ChangesView.Revert)
 
 " open IdeaVim settings
 nmap \\v <Action>(VimActions)

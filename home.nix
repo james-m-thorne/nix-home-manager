@@ -47,6 +47,7 @@
     ".ideavimrc".source = ./config/.ideavimrc;
   };
 
+  home.sessionPath = [ "$HOME/go/bin" ];
   programs.go = {
     enable = true;
   };
@@ -67,7 +68,6 @@
       enable = true;
     };
     shellAliases = {
-      ls = "eza";
       ll = "ls -l";
       gt = "git train";
       gta = "git train append";
@@ -148,6 +148,7 @@
     kind
     kubectl
     kubernetes-helm
+    nodejs
     python3
     yarn
     yq
