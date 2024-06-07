@@ -34,6 +34,10 @@ set surround
 set commentary
 set matchit
 
+" Which key setup
+set which-key
+set notimeout
+
 " exchange (bundle plugin)
 " usage: https://github.com/tommcdo/vim-exchange
 set exchange

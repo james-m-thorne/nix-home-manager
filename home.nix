@@ -68,6 +68,7 @@
       enable = true;
     };
     shellAliases = {
+      bazel = "bazelisk";
       ll = "ls -l";
       gt = "git train";
       gta = "git train append";
@@ -134,7 +135,6 @@
   home.packages = with pkgs;[
     (nerdfonts.override { fonts = [ "Meslo" "FiraCode" "CascadiaCode" ]; })
     awscli
-    bazel
     bazel-buildtools
     bazel-gazelle
     bazelisk
