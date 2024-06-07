@@ -45,9 +45,15 @@
     ".p10k.zsh".source = ./config/zsh/.p10k.zsh;
     ".home.zsh".source = ./config/zsh/.home.zsh;
     ".ideavimrc".source = ./config/.ideavimrc;
+
+    ".local/bin/bazel".source = "${pkgs.bazelisk}/bin/bazelisk";  # Symlink bazel to bazelisk
   };
 
-  home.sessionPath = [ "$HOME/go/bin" ];
+  home.sessionPath = [ 
+    "$HOME/.local/bin" 
+    "$HOME/go/bin" 
+  ];
+
   programs.go = {
     enable = true;
   };
@@ -68,7 +74,6 @@
       enable = true;
     };
     shellAliases = {
-      bazel = "bazelisk";
       ll = "ls -l";
       gt = "git train";
       gta = "git train append";
