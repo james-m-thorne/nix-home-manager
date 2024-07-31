@@ -132,6 +132,10 @@
     enable = true;
     userName  = "james-m-thorne";
     userEmail = "jmthorne101@gmail.com";
+    difftastic = {
+      enable = true;
+      background = "dark";
+    };
   };
 
   home.packages = with pkgs;[
@@ -152,6 +156,7 @@
     kubernetes-helm
     nodejs
     python3
+    poetry
     yarn
     yq
   ];
