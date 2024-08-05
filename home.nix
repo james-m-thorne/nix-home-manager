@@ -150,6 +150,7 @@
     fzf
     gh
     htop
+    jetbrains.idea-ultimate
     jq
     kind
     kubectl
