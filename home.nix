@@ -83,6 +83,7 @@
     };
     shellAliases = {
       cat = "bat";
+      ls = "eza --color=always --long --git --no-filesize --icons=always --no-time --no-user --no-permissions";
       ll = "ls -l";
       gt = "git train";
       gta = "git train append";
