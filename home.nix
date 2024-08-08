@@ -43,6 +43,7 @@
 
   home.file = {
     ".ideavimrc".source = ./config/.ideavimrc;
+    ".config/starship.toml".source = ./config/starship.toml;
 
     ".local/bin/bazel".source = "${pkgs.bazelisk}/bin/bazelisk";  # Symlink bazel to bazelisk
   };
@@ -130,27 +131,10 @@
     };
   };
 
+  # Settings managed by config/starship.toml
   programs.starship = {
     enable = true;
     enableZshIntegration = true;
-    settings = {
-      command_timeout = 5000;
-      git_status = {
-        format = "([$all_status$ahead_behind]($style) )";
-        style = "bold yellow";
-        ahead = "⇡\${count}";
-        diverged = "⇡\${ahead_count}⇣\${behind_count}";
-        behind = "⇣\${count}";
-        modified = "!\${count}";
-        untracked = "?\${count}";
-        staged = "+\${count}";
-        stashed = "*\${count}";
-        deleted = "✘\${count}";
-      };
-      directory = {
-        truncation_length = 8;
-      };
-    };
   };
 
   home.packages = with pkgs;[
