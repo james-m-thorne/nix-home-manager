@@ -42,7 +42,6 @@
   home.stateVersion = "23.11";
 
   home.file = {
-    ".p10k.zsh".source = ./config/zsh/.p10k.zsh;
     ".home.zsh".source = ./config/zsh/.home.zsh;
     ".ideavimrc".source = ./config/.ideavimrc;
 
@@ -62,6 +61,11 @@
     enable = true;
     enableZshIntegration = true;
     nix-direnv.enable = true;
+  };
+
+  programs.fzf = {
+    enable = true;
+    enableZshIntegration = true;
   };
 
   programs.zsh = {
@@ -84,21 +88,11 @@
       gtm = "git train set-merged";
       gtsh = "git train show";
     };
-    zplug = {
-      enable = true;
-      plugins = [
-        { 
-          name = "romkatv/powerlevel10k"; 
-          tags = [ as:theme depth:1 ]; 
-        } # Installations with additional options. For the list of options, please refer to Zplug README.
-      ];
-    };
     initExtraFirst = ''
       # Amazon Q pre block. Keep at the top of this file.
       [ -x "$(command -v q)" ] && eval "$(q init zsh pre --rcfile zshrc)"
     '';
     initExtra = ''
-      source $HOME/.p10k.zsh
       source $HOME/.home.zsh
 
       # Source the secrets file
@@ -138,6 +132,29 @@
     };
   };
 
+  programs.starship = {
+    enable = true;
+    enableZshIntegration = true;
+    settings = {
+      command_timeout = 5000;
+      git_status = {
+        format = "([$all_status$ahead_behind]($style) )";
+        style = "bold yellow";
+        ahead = "⇡\${count}";
+        diverged = "⇡\${ahead_count}⇣\${behind_count}";
+        behind = "⇣\${count}";
+        modified = "!\${count}";
+        untracked = "?\${count}";
+        staged = "+\${count}";
+        stashed = "*\${count}";
+        deleted = "✘\${count}";
+      };
+      directory = {
+        truncation_length = 8;
+      };
+    };
+  };
+
   home.packages = with pkgs;[
     (nerdfonts.override { fonts = [ "Meslo" "FiraCode" "CascadiaCode" ]; })
     awscli
@@ -147,7 +164,6 @@
     dbt
     eza
     fortune
-    fzf
     gh
     htop
     jetbrains.idea-ultimate
