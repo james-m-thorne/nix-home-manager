@@ -42,7 +42,6 @@
   home.stateVersion = "23.11";
 
   home.file = {
-    ".home.zsh".source = ./config/zsh/.home.zsh;
     ".ideavimrc".source = ./config/.ideavimrc;
 
     ".local/bin/bazel".source = "${pkgs.bazelisk}/bin/bazelisk";  # Symlink bazel to bazelisk
@@ -87,14 +86,13 @@
       gts = "git train sync";
       gtm = "git train set-merged";
       gtsh = "git train show";
+      gcamp = "git commit -am \"$1\" && git push";
     };
     initExtraFirst = ''
       # Amazon Q pre block. Keep at the top of this file.
       [ -x "$(command -v q)" ] && eval "$(q init zsh pre --rcfile zshrc)"
     '';
     initExtra = ''
-      source $HOME/.home.zsh
-
       # Source the secrets file
       [ -f $HOME/.nixsecrets ] && source $HOME/.nixsecrets
 
