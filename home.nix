@@ -68,6 +68,10 @@
     enableZshIntegration = true;
   };
 
+  programs.bat = {
+    enable = true;
+  };
+
   programs.zsh = {
     enable = true;
     enableCompletion = true;
@@ -78,6 +82,7 @@
       enable = true;
     };
     shellAliases = {
+      cat = "bat";
       ll = "ls -l";
       gt = "git train";
       gta = "git train append";
@@ -125,9 +130,11 @@
     enable = true;
     userName  = "james-m-thorne";
     userEmail = "jmthorne101@gmail.com";
-    difftastic = {
+    delta = {
       enable = true;
-      background = "dark";
+      options = {
+        side-by-side = true;
+      };
     };
   };
 
@@ -145,7 +152,6 @@
     bazelisk
     dbt
     eza
-    fortune
     gh
     htop
     jetbrains.idea-ultimate
