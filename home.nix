@@ -39,7 +39,7 @@
   # You can update Home Manager without changing this value. See
   # the Home Manager release notes for a list of state version
   # changes in each release.
-  home.stateVersion = "23.11";
+  home.stateVersion = "24.05";
 
   home.file = {
     ".ideavimrc".source = ./config/.ideavimrc;
@@ -86,7 +86,7 @@
       gts = "git train sync";
       gtm = "git train set-merged";
       gtsh = "git train show";
-      gcamp = "git commit -am \"$1\" && git push";
+      gcamp = "_gcamp(){ git commit -am \"$1\" && git push; }; _gcamp";
     };
     initExtraFirst = ''
       # Amazon Q pre block. Keep at the top of this file.
