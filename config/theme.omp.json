@@ -81,11 +81,6 @@
           "template": " \uF313 nix-{{ .Type }}"
         },
         {
-          "type": "bazel",
-          "style": "plain",
-          "foreground": "#829F82"
-        },
-        {
           "type": "kubectl",
           "style": "plain",
           "foreground": "#326ce5",
