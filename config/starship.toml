@@ -1,4 +1,4 @@
-command_timeout = 4000
+command_timeout = 5000
 
 # Default format at https://starship.rs/config/#default-prompt-format
 # With $fill after $pijul_channel to right align things

@@ -43,8 +43,7 @@
 
   home.file = {
     ".ideavimrc".source = ./config/.ideavimrc;
-    ".config/starship.toml".source = ./config/starship.toml;
-
+    ".config/theme.omp.json".source = ./config/theme.omp.json;
     ".local/bin/bazel".source = "${pkgs.bazelisk}/bin/bazelisk";  # Symlink bazel to bazelisk
   };
 
@@ -53,37 +52,46 @@
     "$HOME/go/bin" 
   ];
 
-  programs.go = {
-    enable = true;
-  };
+  # See https://nix-community.github.io/home-manager/options.xhtml for all available options
+  programs.go.enable = true;
+  programs.fzf.enable = true;
+  programs.bat.enable = true;
+  programs.ripgrep.enable = true;
+  programs.eza.enable = true;
 
   programs.direnv = {
     enable = true;
-    enableZshIntegration = true;
     nix-direnv.enable = true;
   };
 
-  programs.fzf = {
+  programs.gh = {
     enable = true;
-    enableZshIntegration = true;
+    settings = {
+      git_protocol = "https";
+      editor = "vim";
+      prompt = "enabled";
+      pager = "cat";
+
+      aliases = {
+        co = "pr checkout";
+        pv = "pr view";
+      };
+    };
   };
 
-  programs.bat = {
+  programs.oh-my-posh = {
     enable = true;
+    settings = builtins.fromJSON (builtins.readFile "${toString ./config/theme.omp.json}");
   };
 
   programs.zsh = {
     enable = true;
     enableCompletion = true;
-    autosuggestion = {
-      enable = true;
-    };
-    syntaxHighlighting = {
-      enable = true;
-    };
+    autosuggestion.enable = true;
+    syntaxHighlighting.enable = true;
     shellAliases = {
       cat = "bat";
-      ls = "eza --color=always --long --git --no-filesize --icons=always --no-time --no-user --no-permissions";
+      ls = "eza --color=always --no-filesize --icons=always --no-time --no-user --no-permissions";
       ll = "ls -l";
       gt = "git train";
       gta = "git train append";
@@ -139,12 +147,6 @@
     };
   };
 
-  # Settings managed by config/starship.toml
-  programs.starship = {
-    enable = true;
-    enableZshIntegration = true;
-  };
-
   home.packages = with pkgs;[
     (nerdfonts.override { fonts = [ "Meslo" "FiraCode" "CascadiaCode" ]; })
     awscli
@@ -152,10 +154,7 @@
     bazel-gazelle
     bazelisk
     dbt
-    eza
-    gh
     htop
-    jetbrains.idea-ultimate
     jq
     kind
     kubectl
