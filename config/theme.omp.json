@@ -2,6 +2,13 @@
   "$schema": "https://raw.githubusercontent.com/JanDeDobbeleer/oh-my-posh/main/themes/schema.json",
   "version": 2,
   "final_space": true,
+  "transient_prompt": {
+    "foreground": "#00ff0d",
+    "template": "\uf432 ",
+    "foreground_templates": [
+      "{{ if gt .Code 0 }}#ff0000{{ end }}"
+    ]
+  },
   "blocks": [
     {
       "alignment": "left",
@@ -39,12 +46,15 @@
         {
           "foreground": "#43CCEA",
           "properties": {
-            "folder_icon": "\ue5fe",
-            "style": "agnoster_short",
-            "max_depth": 5
+            "folder_icon": "\ue5fe ",
+            "style": "agnoster_full"
+          },
+          "mapped_locations_enabled": true,
+          "mapped_locations": {
+            "~/work/*": "\uF09B ",
+            "~/personal/*": "⌂ "
           },
           "style": "plain",
-          "template": " {{ .Path }} ",
           "type": "path"
         },
         {
@@ -64,6 +74,17 @@
     {
       "alignment": "right",
       "segments": [
+        {
+          "type": "nix-shell",
+          "style": "plain",
+          "foreground": "#326ce5",
+          "template": " \uF313 nix-{{ .Type }}"
+        },
+        {
+          "type": "bazel",
+          "style": "plain",
+          "foreground": "#829F82"
+        },
         {
           "type": "kubectl",
           "style": "plain",
