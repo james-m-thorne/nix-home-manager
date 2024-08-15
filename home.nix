@@ -112,6 +112,7 @@
       [ -f $HOME/.nixsecrets ] && source $HOME/.nixsecrets
 
       [[ ! $(command -v nix) && -e "/nix/var/nix/profiles/default/etc/profile.d/nix-daemon.sh" ]] && source "/nix/var/nix/profiles/default/etc/profile.d/nix-daemon.sh"
+      [[ ! $(command -v nix) && -e "$HOME/.nix-profile/etc/profile.d/nix.sh" ]] && source "$HOME/.nix-profile/etc/profile.d/nix.sh"
 
       # Amazon Q post block. Keep at the bottom of this file.
       [ -x "$(command -v q)" ] && eval "$(q init zsh post --rcfile zshrc)"
