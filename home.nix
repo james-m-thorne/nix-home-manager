@@ -91,7 +91,6 @@
     syntaxHighlighting.enable = true;
     shellAliases = {
       cat = "bat";
-      cd = "z";
       ls = "eza --color=always --no-filesize --icons=always --no-time --no-user --no-permissions";
       ll = "ls -l";
       gt = "git train";
