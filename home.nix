@@ -164,7 +164,7 @@
     python3
     poetry
     yarn
-    yq
+    yq-go
   ];
 
 }
