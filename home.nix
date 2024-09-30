@@ -163,7 +163,7 @@
     nodejs
     python3
     poetry
-    yarn
+    yarn-berry
     yq-go
   ];
 
