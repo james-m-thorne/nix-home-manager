@@ -4,6 +4,7 @@
   "final_space": true,
   "transient_prompt": {
     "foreground": "#00ff0d",
+    "newline": true,
     "template": "\uf432 ",
     "foreground_templates": [
       "{{ if gt .Code 0 }}#ff0000{{ end }}"
@@ -11,7 +12,9 @@
   },
   "blocks": [
     {
+      "type": "prompt",
       "alignment": "left",
+      "newline": true,
       "segments": [
         {
           "foreground": "#dd1e1e",
@@ -68,10 +71,10 @@
           "template": "<#fafafa>on </>{{ .HEAD }}{{ if .Staging.Changed }}<#FF6F00> \uf046 {{ .Staging.String }}</>{{ end }}{{ if and (.Working.Changed) (.Staging.Changed) }} |{{ end }}{{ if .Working.Changed }} \uf044 {{ .Working.String }}{{ end }}{{ if gt .StashCount 0 }} \ueb4b {{ .StashCount }}{{ end }} ",
           "type": "git"
         }
-      ],
-      "type": "prompt"
+      ]
     },
     {
+      "type": "prompt",
       "alignment": "right",
       "segments": [
         {
@@ -116,10 +119,10 @@
           "foreground": "#6e0101",
           "template": "  {{ .Full }}"
         }
-      ],
-      "type": "prompt"
+      ]
     },
     {
+      "type": "prompt",
       "alignment": "left",
       "newline": true,
       "segments": [
@@ -135,8 +138,7 @@
           "template": "\uf432 ",
           "type": "status"
         }
-      ],
-      "type": "prompt"
+      ]
     }
   ]
 }

@@ -148,14 +148,17 @@
     };
   };
 
+  fonts.fontconfig.enable = true;
   home.packages = with pkgs;[
-    (nerdfonts.override { fonts = [ "Meslo" "FiraCode" "CascadiaCode" ]; })
+    (nerdfonts.override { fonts = [ "Meslo" "FiraCode" "CascadiaCode" "JetBrainsMono" ]; })
     awscli
     bazel-buildtools
     bazel-gazelle
     bazelisk
+    black
     dbt
     htop
+    jira-cli-go
     jq
     kind
     kubectl
