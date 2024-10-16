@@ -64,7 +64,6 @@
           "foreground": "#00ff0d",
           "properties": {
             "branch_icon": "\uF418 ",
-            "fetch_stash_count": true,
             "fetch_status": true
           },
           "style": "plain",
@@ -98,6 +97,8 @@
         {
           "type": "go",
           "style": "plain",
+          "parse_mod_file": true,
+          "cache_version": true,
           "foreground": "#00ADD8",
           "template": " \uE627 {{ .Full }} "
         },

@@ -156,7 +156,6 @@
     bazel-gazelle
     bazelisk
     black
-    dbt
     htop
     jira-cli-go
     jq
