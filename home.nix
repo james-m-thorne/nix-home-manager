@@ -103,10 +103,6 @@
       gtsh = "git train show";
       gcamp = "_gcamp(){ git commit -am \"$1\" && git push; }; _gcamp";
     };
-    initExtraFirst = ''
-      # Amazon Q pre block. Keep at the top of this file.
-      [ -x "$(command -v q)" ] && eval "$(q init zsh pre --rcfile zshrc)"
-    '';
     initExtra = ''
       # Source the secrets file
       [ -f $HOME/.nixsecrets ] && source $HOME/.nixsecrets
@@ -114,9 +110,23 @@
       [[ ! $(command -v nix) && -e "/nix/var/nix/profiles/default/etc/profile.d/nix-daemon.sh" ]] && source "/nix/var/nix/profiles/default/etc/profile.d/nix-daemon.sh"
       [[ ! $(command -v nix) && -e "$HOME/.nix-profile/etc/profile.d/nix.sh" ]] && source "$HOME/.nix-profile/etc/profile.d/nix.sh"
 
-      # Amazon Q post block. Keep at the bottom of this file.
-      [ -x "$(command -v q)" ] && eval "$(q init zsh post --rcfile zshrc)"
+      setopt AUTO_MENU
+      setopt AUTO_LIST
+      setopt globdots
+      zstyle ':completion:*' auto-list yes
+      zstyle ':completion:*' menu no
+      zstyle ':completion:*' completion-ignore-case on
+      zstyle ':completion:*' matcher-list 'm:{a-z}={A-Za-z}'
     '';
+    plugins = [
+      { name = "zsh-autocomplete"; src = pkgs.fetchFromGitHub {
+          owner = "marlonrichert";
+          repo = "zsh-autocomplete";
+          rev = "24.09.04";
+          sha256 = "o8IQszQ4/PLX1FlUvJpowR2Tev59N8lI20VymZ+Hp4w=";
+        };
+      }
+    ];
     oh-my-zsh = {
       enable = true;
       plugins = [
